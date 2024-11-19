@@ -1,10 +1,9 @@
 
-import { log } from 'console';
 import React from 'react'
 
-function Page({searchParams}: {searchParams: {amount: number}}) {
-  log(searchParams);
-  const amount = searchParams.amount;
+ async function Page(context: { searchParams: Promise<{ amount: string }> }) {
+ const searchParams = await context.searchParams
+  const amount = searchParams.amount
   return (
     <main className=" max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-gradient-to-tr from-blue-500 to-purple-500">
         <div className="mb-10">

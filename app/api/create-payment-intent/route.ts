@@ -9,12 +9,13 @@ export async function POST(request: NextRequest) {
       amount,
       currency: 'usd',
       automatic_payment_methods: {enabled: true},
+      metadata: {order_id: 'TEST123123123', user_id: '123123123', user_email: 'test@gmail.com'},
     });
     return NextResponse.json({ clientSecret: paymentIntent.client_secret });
   }catch(error){
     console.error(error);
     return NextResponse.json(
-        { error: `Internal Server asdas Error: ${error}` },
+        { error: `Internal Server Error: ${error}` },
         {status: 500}   
     );
   }
